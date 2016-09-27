@@ -3,9 +3,32 @@
 ## Unreleased
 
 - enhancements
+- bugs
+
+## 1.4.1
+
+- enhancements
+- bugs
+    + Ensure max-height of asset preview within image uploader
+    + Fix bug in activity log paging where certain cases or Kaminari's page object won't convert to a page number
+
+## 1.4
+
+- enhancements
     + Add custom authorization levels
     + \#55333: Add pagination 📖
+    + Add concern extension capability to `Fae::Change`
+    + Tables now indicate to user something is happening when filtering
+    + Add fae_tracker_parent to track child model changes in parent tracked changes list
 - bugs
+    + Added in a base controller method to enable/disable pagination per controller.
+    + \#59273: Remove header on nested tables
+    + \#59473: Reinitialize form elements on redrawing of nested forms
+    + \#59386: Show sub page indicator as "open" when landing on an active view
+    + \#58752: Languages should load from previously selected preference
+    + Default language on static pages should be the first defined
+    + Set language to English for Admin side to prevent translation attempt when locale other than English has been set on the frontend
+    + Restrict markdown helper to modal content
 
 ## 1.3.1
 
