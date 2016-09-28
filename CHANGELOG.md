@@ -9,7 +9,6 @@
 
 - enhancements
 - bugs
-<<<<<<< HEAD
     + \#61163: Resolve issue with sortable theads not reacting to user input
     + \#60184: Min-height is no longer added to last form section referenced in form subnav
     + \#60184: Tighten default padding of form inputs and sections
