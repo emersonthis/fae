@@ -15,6 +15,10 @@
     + \#60184: Tighten default padding of form inputs and sections
     + \#61045: Ensure max-height of asset preview within image uploader
     + Fix bug in activity log paging where certain cases or Kaminari's page object won't convert to a page number
+    + \#60923: Widen hint model for video url helper
+    + \#60433: Adds flash messages to dashboard
+    + \#61096: Adds warning notification style, apply to cancel message
+    + Fix for_fae_index issue, since it's an override-able method
 
 ## 1.4
 
