@@ -73,7 +73,12 @@ Fae.tables = {
         // Save it to the cookie as a string
         Cookies.set(_this.sort_cookie_name, cookie_value);
 
-        _this.replaceStickyTableHeader($this.siblings('.sticky-table-header'), $this);
+        // Replace sticky table headers w/ newly sorted headers
+        $this.siblings('.sticky-table-header')
+          .find('thead')
+          .html(
+            $this.find('thead').html()
+          );
       });
   },
 
@@ -283,7 +288,6 @@ Fae.tables = {
    * Fix a table header to the top of the view on scroll
    */
   stickyTableHeader: function() {
-    var _this = this;
     var $sticky_tables = $('.content table:not(.stuck-table)');
 
     // Add sticky psuedo tables after our main table to hold the fixed header
@@ -298,8 +302,13 @@ Fae.tables = {
       $fixed_header.append( $header );
       $this.after($fixed_header);
 
+      // Proxy clicks from .sticky-table-header to underlying tablesorter instance
       if ($this.hasClass('tablesorter')) {
-        _this.proxyStickyTableHeaderClicks($fixed_header, $this);
+        $fixed_header.on('click', 'th', function(e) {
+          $this
+            .find("th[data-column='" + $(e.currentTarget).data('column') + "']")
+            .trigger('sort');
+        });
       }
     });
 
@@ -326,24 +335,6 @@ Fae.tables = {
     FCH.load.push( Fae.tables.sizeFixedHeader );
     FCH.resize.push( Fae.tables.sizeFixedHeader );
     FCH.scroll.push(stickyTableHeaderScroll);
-  },
-
-  /**
-   * Proxy clicks from .sticky-table-header to underlying tablesorter instance
-   */
-  proxyStickyTableHeaderClicks: function($fixed_header, $sticky_table) {
-    $fixed_header.on('click', 'th', function(e) {
-      $sticky_table
-        .find("th[data-column='" + $(e.currentTarget).data('column') + "']")
-        .trigger('sort');
-    });
-  },
-
-  /**
-   *
-   */
-  replaceStickyTableHeader: function($fixed_header, $sticky_table) {
-    $fixed_header.find('thead').html($sticky_table.find('thead').html());
   },
 
   /**
