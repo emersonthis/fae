@@ -35,13 +35,17 @@ Fae.form.filtering = {
     // hardcode _this because this === Fryr object
     var _this = Fae.form.filtering;
     var post_url = _this.$filter_form.attr('action');
-    _this.$filter_form.next('table').addClass('loading-fade');
+    var $results_table = ($(".js-results-table").length) ? $(".js-results-table").first() : _this.$filter_form.find('table');
+ 
+    $results_table.addClass('loading-fade');
 
     $.post(post_url, this.params, function(data){
       var $data = $(data);
       var $table_from_data = $data.find('table').first();
+      
       // replace table
-      _this.$filter_form.next('table').replaceWith($table_from_data);
+      $results_table.replaceWith($table_from_data);
+      
       // replace sticky header
       $('.sticky-table-header thead').html($table_from_data.find('thead').html());
       // replace pagination

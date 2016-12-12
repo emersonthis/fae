@@ -8,6 +8,7 @@
 ## 1.4.1
 
 - enhancements
+    + Adds support for "js-results-table" utility class for filtered results AJAX targeting
 - bugs
     + \#60596: Add helper + CSS for displaying images in list views
     + \#61975: Add bottom border to table rows
@@ -21,6 +22,7 @@
     + \#60184: Tighten default padding of form inputs and sections
     + \#61045: Ensure max-height of asset preview within image uploader
     + Fix bug in activity log paging where certain cases or Kaminari's page object won't convert to a page number
+    + \#60183: Resolive issue with smaller images in popup rendering microscopic due to padding.
     + \#60923: Widen hint model for video url helper
     + \#60433: Adds flash messages to dashboard
     + \#61096: Adds warning notification style, apply to cancel message
