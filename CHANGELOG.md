@@ -3,7 +3,12 @@
 ## Unreleased
 
 - enhancements
+    + \#62472: Add keyboard support to form checkboxes
+    + \#62473: Ensure focus styles exist for all form elements
+    + \#52299: Adds caching system
 - bugs
+    + Checks for use_pagination method on filter action
+    + Fixes filter form variable
 
 ## 1.4.1
 

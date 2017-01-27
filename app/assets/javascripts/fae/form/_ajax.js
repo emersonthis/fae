@@ -286,7 +286,7 @@ Fae.form.ajax = {
    * @todo Clean this up, moving listeners into their respective component classes (select, checkbox, etc.)
    */
   htmlListeners: function() {
-    $('#js-main-content')
+    $('#js-main-content, .login-form > form')
 
       /**
        * For the yes/no slider
@@ -318,21 +318,25 @@ Fae.form.ajax = {
        * Support for a focus state on radio collections
        */
       .on('focus blur', '.radio_collection :radio', function(e) {
-        $(this).closest('.input.radio_collection').toggleClass('focused', $(this).has(':focus'));
+        $(this)
+          .closest('.input.radio_collection')
+          .toggleClass('focused', $(this).has(':focus'));
       })
 
       /**
        * Support for a focus state on checkboxes
        */
       .on('focus blur', '.boolean :checkbox, .js-checkbox-wrapper :checkbox', function(e) {
-        $(this).closest('label.boolean, span.checkbox').toggleClass('focused', $(this).has(':focus'));
+        $(this)
+          .closest('label.boolean, span.checkbox')
+          .toggleClass('focused', $(this).has(':focus'));
       })
 
       /**
        * Support spacebar toggling for checkboxes
        */
       .on('keydown', '.boolean, .js-checkbox-wrapper :checkbox', function(e) {
-        if (e.which == 32) {
+        if (e.which === 32) {
           e.preventDefault();
           $(':checkbox:focus')
             .closest('label')
@@ -343,12 +347,12 @@ Fae.form.ajax = {
       /**
        * Support for shift+tab off of ms-list element.
        * By default, $.multiSelect() plugin captures shift+tab and disgards it
-       * @todo This entire method feels very brittle. Possibile alternative:
+       * @todo This entire method feels very brittle. Possible alternative:
        * - Create an index of all focusable form elements on page load / DOM mutation
        * - Use this index to navigate upwards from .ms-list element
       */
       .on('keydown', '.ms-list', function(e) {
-        if (e.which == 9 && e.shiftKey) {
+        if (e.which === 9 && e.shiftKey) {
           e.preventDefault();
 
           // Sniff out the previous focusable element
