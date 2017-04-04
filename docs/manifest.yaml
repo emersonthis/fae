@@ -1,5 +1,5 @@
 # First item will be the default content on https://faecoms.com/documentation/
-- name: Installation
+- name: Installation is easy
   path: docs/installation/index.md
   
 - name: Topics
